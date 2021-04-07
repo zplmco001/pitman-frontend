@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  form: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit() {
+    if (this.form.valid) {
+      
+    }
   }
 
 }
