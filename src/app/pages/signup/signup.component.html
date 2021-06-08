@@ -2,29 +2,29 @@
   <mat-card>
       <mat-card-title>Welcome to Pitman</mat-card-title>
       <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="submit()">
+          <form [formGroup]="form">
 
               <mat-form-field appearance="outline">
                   <mat-label>Username</mat-label>
-                  <input matInput>
+                  <input matInput #username>
 
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>E-Mail</mat-label>
-                <input matInput>
+                <input matInput #email>
 
             </mat-form-field>
 
               <mat-form-field appearance="outline">
                   <mat-label>Password</mat-label>
-                  <input type="password" matInput>
+                  <input type="password" matInput #password>
 
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>Password Again</mat-label>
-                <input type="password" matInput>
+                <input type="password" matInput #passwordagain>
 
             </mat-form-field>
 
@@ -33,7 +33,8 @@
             
 
               <div class="button row">
-                  <button type="submit" mat-stroked-button color="primary">Sign Up</button>
+                  <button (click)="signup(username.value, email.value, password.value, passwordagain.value)"
+                   mat-stroked-button color="primary">Sign Up</button>
               </div>
 
           </form>
