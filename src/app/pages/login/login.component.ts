@@ -29,15 +29,16 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
+
     if (this.form.valid) {
       let loginData = new LoginUser(username, password);
-      this.router.navigate([''])
-      /*this.subscriptions.push(this.credentialsService.login(loginData).subscribe(res => {
-
+      this.subscriptions.push(this.credentialsService.login(loginData).subscribe(res => {
+        localStorage.setItem('token', res.token)
+        this.router.navigate([''])
       }, 
       err => {
-
-      }))*/
+        console.log(err)
+      }))
     }
   }
 

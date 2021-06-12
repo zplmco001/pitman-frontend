@@ -15,11 +15,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './dialogs/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AccountDefinitionsComponent } from './account-definitions/account-definitions.component';
 import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { UserService } from './services/user-service';
+import { ReportComponent } from './pages/report/report.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { QueueService } from './services/queue-service';
 
 
 @NgModule({
@@ -29,7 +34,8 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
     SignupComponent,
     MainpageComponent,
     DialogComponent,
-    AccountDefinitionsComponent
+    AccountDefinitionsComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +52,14 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    MatProgressBarModule,
+    MatTabsModule,
     SocialLoginModule
   ],
-  providers: [CredentialsService,
+  providers: [
+    CredentialsService,
+    UserService,
+    QueueService,
     {provide: 'SocialAuthServiceConfig',
     useValue: {
       autoLogin: false,
@@ -56,11 +67,12 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
         {
           id: FacebookLoginProvider.PROVIDER_ID,
           provider: new FacebookLoginProvider(
-            '182413923790004'
+            'AppId'
           )
         }
       ]
-    } as SocialAuthServiceConfig, }],
+    } as SocialAuthServiceConfig, },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

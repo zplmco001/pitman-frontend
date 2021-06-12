@@ -1,0 +1,14 @@
+<div>
+    <mat-card *ngFor="let p of posts" style="width: 50%; justify-content: center;align-items: center;margin-left: 25%;margin-top: 5%;">
+      <mat-card-title>{{p.username}}</mat-card-title>
+      <mat-card-content>
+         {{p.user_post_think}}
+        
+      </mat-card-content>
+      <mat-progress-bar mode="determinate" [value]="p.comment_results.positive"></mat-progress-bar>
+       <div style="margin:2%;padding-bottom: 5%;">
+        <p style="float: left;">%{{p.comment_results.positive}} positive </p>
+         <p style="float: right;">%{{p.comment_results.negative}} negative</p>
+       </div>
+    </mat-card>
+  </div>
